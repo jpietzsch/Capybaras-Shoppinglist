@@ -55,19 +55,14 @@ export default userProvider;
 
 
 
+
 function getUsers() {
 
-  const test = db.collectionGroup("Posts").where("isVisible", "==", true).get()
-    .then(querySnapshot => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-      })
-      return null
+  db.collection('/users')
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data())
     })
-
-  const querySnapshot = getDocs(collection(db, "users"));
-      .then()
-  querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
-  });
+  })
 }
