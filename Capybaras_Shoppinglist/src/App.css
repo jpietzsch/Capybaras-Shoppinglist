@@ -1,0 +1,278 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #fcfcfc;
+  --tertiary-color: #f6f930;
+  --quaternary-color: #f47d23;
+  --quinary-color: #2f2f2f;
+}
+
+#title {
+  font-family: "RubikBubbles";
+  font-size: 80px;
+  color: var(--tertiary-color);
+  text-shadow: 2px 2px 1px var(--quaternary-color);
+  margin-bottom: 150px;
+  margin-top: 0px;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0rem;
+  text-align: center;
+}
+
+/*Login Start*/
+#LoginForm {
+  font-weight: bold;
+  margin: auto;
+  width: 93%;
+  text-transform: capitalize;
+  margin-top: 30px;
+  font-size: 20px;
+  color: var(--primary-color) !important;
+  background-image: url("assets/img/bg_blue.jpg");
+  padding-bottom: 20px;
+  border-radius: 50px;
+  border: 3px solid var(--quaternary-color);
+  padding-top: 30px;
+}
+
+#LoginForm {
+  margin-top: 50px;
+  display: block;
+  justify-content: center;
+}
+
+#usernametxt,
+#passwordtxt {
+  font-size: 30px;
+  color: var(--tertiary-color);
+  text-shadow: 2px 2px 1px var(--quinary-color);
+  margin: 10px;
+}
+
+#password,
+#username {
+  font-size: 35px;
+  margin: 15px;
+  color: var(--tertiary-color);
+  background-color: var(--quinary-color);
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  transition: 500ms;
+  text-align: center;
+}
+
+#password:focus,
+#username:focus {
+  border-radius: 50px;
+  border: 2px solid var(--secondary-color);
+  background-color: var(--quinary-color);
+}
+
+#password:hover,
+#username:hover {
+  border-radius: 50px;
+  border: 2px solid var(--quaternary-color);
+}
+/*Login end*/
+
+#button {
+  font-weight: bolder;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  text-shadow: 2px 2px 1px var(--quinary-color);
+  border: 1px solid var(--quaternary-color);
+  border-radius: 5px;
+  font-size: 30px;
+  margin-top: 10px;
+  transition: 60ms;
+  margin-bottom: 10px;
+}
+
+#button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--quinary-color);
+}
+
+#button:active {
+  transform: scale(0.99);
+  box-shadow: 0 0 15px var(--quaternary-color);
+}
+
+#legalbtn,
+#aboutusbtn {
+  margin-top: 5px;
+}
+
+.sectionText {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#sectionheader {
+  font-size: 35px;
+  font-weight: 5000;
+  color: var(--primary-color);
+}
+
+/*PriceTable Start*/
+#pricing {
+  color: var(--primary-color);
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+  border-radius: 50px;
+  border: 3px solid var(--quaternary-color);
+  background-image: url("assets/img/bg_yellow.jpg");
+  text-align: center; /* Zentriert das Element horizontal */
+}
+
+#price_table {
+  margin: 0 auto; /* Zentriert das Element horizontal */
+  display: inline-block; /* Stellt sicher, dass die Tabelle mittig zentriert */
+  color: var(--primary-color);
+}
+
+.headprices {
+  font-size: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: var(--primary-color);
+}
+
+.prices {
+  font-size: 20px;
+  padding-left: 5px;
+  padding: 5px;
+}
+/*PriceTable End*/
+
+/*UserInfo Start*/
+#userinfo {
+  font-weight: bold;
+  margin: auto;
+  width: 93%;
+  text-transform: capitalize;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: var(--tertiary-color);
+  text-shadow: 2px 2px 1px var(--quinary-color);
+  background-image: url("assets/img/bg_blue.jpg");
+  padding-bottom: 20px;
+  border-radius: 50px;
+  border: 3px solid var(--quaternary-color);
+}
+
+.popup {
+  position: fixed; /* Stellt sicher, dass das Popup über allen anderen Elementen liegt */
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Zentriert das Popup horizontal und vertikal */
+  background-color: var(--tertiary-color);
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.popup.open {
+  display: block; /* Zeigt das Popup an */
+}
+
+.overlay {
+  position: fixed; /* Stellt sicher, dass das Overlay über allen anderen Elementen liegt */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Schwarz */
+  z-index: 10; /* Stellt sicher, dass das Overlay über dem Popup liegt */
+  display: none; /* Das Overlay ist standardmäßig verborgen */
+}
+.overlay.open {
+  display: block; /* Zeigt das Overlay an, wenn das Popup geöffnet ist */
+}
+
+.popup-header {
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popup-body {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: center; /* Zentriert die Elemente in der flexbox-Container */
+}
+
+.popup-button {
+  border: solid 1px;
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--primary-color);
+  display: inline-block;
+}
+/*UserInfo End*/
+
+/*Phone Start*/
+@media only screen and (max-width: 600px) {
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+  #username,
+  #password {
+    font-size: 25px;
+    width: 90%;
+    margin: 5px;
+  }
+  #usernametxt,
+  #passwordtxt {
+    font-size: 20px;
+  }
+  #login-button {
+    font-size: 20px;
+  }
+
+  #title {
+    font-size: 40px;
+  }
+
+  .headprices {
+    font-size: 20px;
+  }
+  .prices {
+    font-size: 16px;
+  }
+  #price_table {
+    font-size: 16px; /* Verkleinere die Schriftgröße für kleinere Bildschirme */
+  }
+
+  /* Verkleinere die Zellengröße für kleinere Bildschirme */
+  #price_table td {
+    width: 50%;
+  }
+  .headprices,
+  .prices {
+    width: 100%;
+  }
+}
+
+/*Phone End*/
