@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./components/navbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import LoginForm from "./components/login-form";
 import AboutUs from "./components/about-us";
 import Legal from "./components/legal";
@@ -24,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <div className="content">
+        <ToastContainer />
         <Navbar />
         <h1>Capybaras Shopping List</h1>
         <section>{Content({ page })}</section>

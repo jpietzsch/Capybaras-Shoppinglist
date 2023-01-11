@@ -1,13 +1,12 @@
 import { useState } from "react";
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, getDocs, collection } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
+
+import { toast } from "react-toastify"
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyAZhvIKBeElo4jwfKhyIGrfGlvgwRu2d-Y",
   authDomain: "capybaras-einkaufsliste.firebaseapp.com",
@@ -19,31 +18,65 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const fb = initializeApp(firebaseConfig);
+
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+const db = getFirestore(fb);
+
+const usersRef = collection(db, "users");
 
 
 const userProvider = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
-  function loginUser(user, pass) {
+  async function loginUser(user, pass) {
 
-
-
-    getUsers()
-
-
-
-    if (user == "test") {
-      if (pass == "test") {
-        console.log("eingeloggt oder so ka")
-        setIsLoggedIn(true)
+    const querySnapshot = await getDocs(usersRef);
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.data().email}`);
+      if (user == doc.data().email) {
+        console.log(`${doc.data().password}`)
+        if (pass == doc.data().password) {
+          setIsLoggedIn(true)
+          toast.success('Eingeloggt als ' + doc.data().email, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+            return
+        }
+        toast.error('Falsches Passwort für ' + user.username, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+          return
       }
-    }
+
+    });
+    toast.error('Diesen Benutzer gibt es nicht', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+      return
   }
 
 
@@ -55,14 +88,3 @@ export default userProvider;
 
 
 
-
-function getUsers() {
-
-  db.collection('/users')
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data())
-    })
-  })
-}
