@@ -33,14 +33,14 @@ const userProvider = () => {
 
   async function loginUser(user, pass) {
 
+
     const querySnapshot = await getDocs(usersRef);
     querySnapshot.forEach((doc) => {
       console.log(`${doc.data().email}`);
       if (user == doc.data().email) {
-        console.log(`${doc.data().password}`)
         if (pass == doc.data().password) {
           setIsLoggedIn(true)
-          toast.success('Eingeloggt als ' + doc.data().email, {
+          toast.success('Eingeloggt als ' + doc.data().firstname, {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -52,7 +52,7 @@ const userProvider = () => {
             });
             return
         }
-        toast.error('Falsches Passwort für ' + user.username, {
+        toast.error('Falsches Passwort für ' + doc.data().email, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -64,7 +64,6 @@ const userProvider = () => {
           });
           return
       }
-
     });
     toast.error('Diesen Benutzer gibt es nicht', {
       position: "top-center",
@@ -76,7 +75,6 @@ const userProvider = () => {
       progress: undefined,
       theme: "dark",
       });
-      return
   }
 
 
